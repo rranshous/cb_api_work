@@ -1,0 +1,118 @@
+Convenience accessor for job client
+Cb.job => Cb::Clients::Job
+
+Using the job client you can
+Cb::Clients::Job#search(args) => Cb::Responses::Job::Search
+Cb::Clients::Job#find_by_criteria(criteria) => Responses::Job::Singular
+Cb::Clients::Job#find_by_did(did) => Responses::Job::Singular
+
+Once you have a Response::Job::Search you probably want a Cb::Models::JobResults
+Response::Job::Search#models() => Cb::Models::JobResults
+
+using the JobResult Model you can access the models for each of the responses jobs
+Cb::Models::JobResults#jobs => [ Cb::Models::Job ]
+Or you can access other data about the job search's results
+Cb::Models::JobResults#args_hash # response raw data
+Cb::Models::JobResults#jobs # job models
+Cb::Models::JobResults#total_count # total number of search results
+Cb::Models::JobResults#last_item_index # last result in this search response
+Cb::Models::JobResults#city # City search is related to 
+Cb::Models::JobResults#state_code # state search is related to
+Cb::Models::JobResults#postal_code
+Cb::Models::JobResults#search_location # overall location of search
+
+
+Now that we have an instance of the Jobs model (Cb::Models::Job) for each of the jobs in our searchwe can pull details of the job
+Cb::Models::Job#did
+Cb::Models::Job#title
+Cb::Models::Job#job_skin
+Cb::Models::Job#job_skin_did
+Cb::Models::Job#job_branding
+Cb::Models::Job#pay
+Cb::Models::Job#pay_per
+Cb::Models::Job#commission
+Cb::Models::Job#bonus
+Cb::Models::Job#pay_other,
+Cb::Models::Job#categories
+Cb::Models::Job#category_codes
+Cb::Models::Job#degree_required
+Cb::Models::Job#experience_required
+Cb::Models::Job#travel_required,
+Cb::Models::Job#industry_codes
+Cb::Models::Job#manages_others_code,
+Cb::Models::Job#contact_email_url
+Cb::Models::Job#contact_fax
+Cb::Models::Job#contact_name
+Cb::Models::Job#contact_phone,
+Cb::Models::Job#company_name
+Cb::Models::Job#company_did
+Cb::Models::Job#company_details_url
+Cb::Models::Job#company_image_url
+Cb::Models::Job#company,
+Cb::Models::Job#description_teaser
+Cb::Models::Job#external_apply_url
+Cb::Models::Job#job_tracking_url
+Cb::Models::Job#location
+Cb::Models::Job#distance
+Cb::Models::Job#latitude
+Cb::Models::Job#longitude
+Cb::Models::Job#location_formatted,
+Cb::Models::Job#description
+Cb::Models::Job#requirements
+Cb::Models::Job#employment_type,
+Cb::Models::Job#details_url
+Cb::Models::Job#service_url
+Cb::Models::Job#similar_jobs_url
+Cb::Models::Job#apply_url,
+Cb::Models::Job#begin_date
+Cb::Models::Job#end_date
+Cb::Models::Job#posted_date,
+Cb::Models::Job#relevancy
+Cb::Models::Job#state
+Cb::Models::Job#city
+Cb::Models::Job#zip,
+Cb::Models::Job#can_be_quick_applied
+Cb::Models::Job#apply_requirements,
+Cb::Models::Job#divison
+Cb::Models::Job#industry
+Cb::Models::Job#location_street_1
+Cb::Models::Job#relocation_options
+Cb::Models::Job#location_street_2
+Cb::Models::Job#display_job_id,
+Cb::Models::Job#manages_others_string,
+Cb::Models::Job#degree_required_code
+Cb::Models::Job#travel_required_code
+Cb::Models::Job#employment_type_code
+Cb::Models::Job#external_application?
+Cb::Models::Job#relocation_covered?
+Cb::Models::Job#manages_others?
+Cb::Models::Job#screener_apply?
+Cb::Models::Job#shared_job?
+Cb::Models::Job#can_be_quick_applied?
+Cb::Models::Job#has_questionnaire?
+If we want to get back a model for the job's company we can use
+Cb::Models::Job#find_company # did not appear to work, require error
+
+
+
+Other `Cb` accessors
+api_client => Cb::Utils::Api
+job => Cb::Clients::Job
+job_details_criteria => Cb::Criteria::Job::Details.new
+category => Cb::Clients::Category
+industry => Cb::Clients::Industry
+company => Cb::Clients::Company
+education_code => Cb::Clients::Education
+employee_types => Cb::Clients::EmployeeTypes
+recommation => Cb::Clients::Recommation
+application => Cb::Clients::Application
+application_external => Cb::Clients::ApplicationExternal
+country => Cb::Utils::Country
+user => Cb::Clients::User
+job_branding => Cb::Clients::JobBranding
+email_subscription => Cb::Clients::EmailSubscription
+saved_search => Cb::Clients::SavedSearch
+talent_network => Cb::Clients::TalentNetwork
+anon_saved_search => Cb::Clients::AnonSavedSearch
+spot => Cb::Clients::Spot
+language_codes => Cb::Clients::LanguageCodes
